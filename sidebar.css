@@ -22,3 +22,12 @@
     color: #1d1d1d;
     font-weight: bold;
 }
+
+@media screen and (max-width: 1170px){
+    .sidebar-toggle{
+        margin-left: -264px;
+    }
+    .sidebar-collapsed{
+        margin-left: 0;
+    }
+}
