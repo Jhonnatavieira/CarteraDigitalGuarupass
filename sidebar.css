@@ -24,7 +24,7 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 1170px){
+@media screen and (max-width: 576px){
     /* TRANSFORMA A SIDEBAR EM GAVETA FLUTUANTE */
     #sidebar {
         position: fixed;
@@ -49,7 +49,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
         z-index: 998; /* Fica logo abaixo da sidebar */
         
         /* Começa invisível e não pode ser clicado */
