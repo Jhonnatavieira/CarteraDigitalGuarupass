@@ -25,7 +25,7 @@
 }
 
 @media screen and (max-width: 1170px){
-    /* 1. TRANSFORMA A SIDEBAR EM GAVETA FLUTUANTE */
+    /* TRANSFORMA A SIDEBAR EM GAVETA FLUTUANTE */
     #sidebar {
         position: fixed;
         top: 0;
@@ -42,7 +42,7 @@
         transform: translateX(-100%);
     }
 
-    /* 2. ESTILIZA O OVERLAY (COMEÇA INVISÍVEL) */
+    /* ESTILIZA O OVERLAY (COMEÇA INVISÍVEL) */
     #overlay {
         position: fixed;
         top: 0;
@@ -60,7 +60,6 @@
         transition: opacity 0.35s ease-in-out;
     }
 
-    /* 3. O TRUQUE! FAZ O OVERLAY APARECER COM CSS PURO */
     /* "Quando a #sidebar NÃO tiver a classe .collapsed, 
        selecione o próximo irmão dela que seja o #overlay" */
     #sidebar:not(.collapsed) + #overlay {

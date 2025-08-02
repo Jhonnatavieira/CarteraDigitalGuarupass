@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log()
     })
 
-    // --- PEQUENA ADIÇÃO ---
+    
     // Adiciona um listener para o clique no overlay
     overlay.addEventListener("click", function() {
         // Garante que ele sempre feche, adicionando a classe
         sidebar.classList.add("collapsed");
     });
-    // --- FIM DA ADIÇÃO ---
+    
 });
