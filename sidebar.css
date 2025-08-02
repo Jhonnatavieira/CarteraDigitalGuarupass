@@ -6,6 +6,11 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+
+}
+.sidebar-footer{
+    margin-top: auto;
+    margin-bottom: 20px;
 }
 
 #sidebar.collapsed{
@@ -25,7 +30,8 @@
 a.sidebar-link{
     padding: .625rem 1.625rem;
     color: #1d1d1d;
-    
+    transition: all 0.35s;
+    position: relative;
 }
 .toggler-btn{
     background-color: transparent;
