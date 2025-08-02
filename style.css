@@ -2,6 +2,10 @@
 
 body{
     background-color: #dcdcdc;
+
+    /* impede o scroll para todas as direções */
+    overflow: hidden;
+    padding: 7px;
 }
 
 li{
@@ -13,18 +17,22 @@ a{
 
 .main{
     /* tamanho */
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
+    min-width: 0;
 
-    overflow: hidden;
+    /* impede o scroll lateral e permite o vertical */
+    overflow: hidden auto;
 
     /* cor background do conteudo */
     background-color: #efefef;
-    margin-right: 7px;
-    margin-top: 7px;
-    margin-bottom: 7px;
 }
 
 .navbar{
     padding: 1.15rem 1.15rem;
+
+    /* posição da navbar */
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
 }

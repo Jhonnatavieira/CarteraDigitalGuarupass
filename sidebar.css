@@ -1,18 +1,27 @@
 #sidebar{
+    /* tamanho */
     max-width: 264px;
     min-width: 264px;
     transition: all 0.35s ease-in-out;
-    /* colocar background color */
+
+    /* comportamento de flex e direção de coluna */
     display: flex;
     flex-direction: column;
+
     background-color: #f9f9f9;
-    margin: 7px;
+    margin-right: 7px;
+
+    /* posição: gruda ela no canto esquerdo com align-self e no topo com o top */
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-self: flex-start;
 }
 .sidebar-footer{
     margin-top: auto;
     margin-bottom: 20px;
 }
-
+ 
 #sidebar.collapsed{
     margin-left: -264px;
 }
