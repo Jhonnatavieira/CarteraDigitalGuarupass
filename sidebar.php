@@ -15,7 +15,19 @@
             </div>
 
             <!-- navegação da sidebar -->
-             <ul class="sidebar-nav p-0"></ul>
+             <ul class="sidebar-nav p-0">
+                <!-- topo da navegação -->
+                <li class="sidebar-header">
+                    Paginas
+                </li>
+                <!-- itens da navegação -->
+                 <li class="sidebar-item">
+                    <a href="" class="sidebar-link">
+                        <span>Dashboard</span>
+                    </a>
+                 </li>
+                
+             </ul>
          </aside>
          <!-- fim da sidebar -->
     </div>
