@@ -5,6 +5,7 @@
     /* colocar background color */
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 #sidebar.collapsed{
@@ -24,10 +25,47 @@
 }
 
 @media screen and (max-width: 1170px){
-    .sidebar-toggle{
-        margin-left: -264px;
+    /* 1. TRANSFORMA A SIDEBAR EM GAVETA FLUTUANTE */
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 999; /* Z-index alto para ficar na frente de tudo */
+        
+        /* A transição agora é no transform, para deslizar */
+        transition: transform 0.35s ease-in-out;
     }
-    .sidebar-collapsed{
-        margin-left: 0;
+
+    /* SOBRESCREVE a regra de margin e usa transform para esconder */
+    #sidebar.collapsed {
+        transform: translateX(-100%);
+    }
+
+    /* 2. ESTILIZA O OVERLAY (COMEÇA INVISÍVEL) */
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 998; /* Fica logo abaixo da sidebar */
+        
+        /* Começa invisível e não pode ser clicado */
+        opacity: 0;
+        pointer-events: none; 
+        
+        /* Animação suave de fade-in/fade-out */
+        transition: opacity 0.35s ease-in-out;
+    }
+
+    /* 3. O TRUQUE! FAZ O OVERLAY APARECER COM CSS PURO */
+    /* "Quando a #sidebar NÃO tiver a classe .collapsed, 
+       selecione o próximo irmão dela que seja o #overlay" */
+    #sidebar:not(.collapsed) + #overlay {
+        /* Torna o overlay visível e clicável */
+        opacity: 1;
+        pointer-events: auto;
     }
 }
