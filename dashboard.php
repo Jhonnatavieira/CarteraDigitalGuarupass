@@ -44,6 +44,7 @@
                     <div class="mb-3 text-center">
                         <h1>sidebar demo</h1>
                     </div>
+                    
                     <div class="mb-3 text-center">
                         <h1>sidebar demo</h1>
                     </div>
