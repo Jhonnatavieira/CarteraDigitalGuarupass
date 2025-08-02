@@ -24,6 +24,7 @@
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
+                <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                        <i class="fa-solid fa-circle-user fa-2xl"></i>
                     </button>
