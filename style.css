@@ -1,5 +1,9 @@
 @import url('sidebar.css');
 
+body{
+    background-color: #efefef;
+}
+
 li{
     list-style: none;
 }

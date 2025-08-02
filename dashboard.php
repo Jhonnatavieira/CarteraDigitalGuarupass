@@ -13,14 +13,14 @@
 <body>
     <div class="d-flex">
         <!-- sidebar -->
-        <aside id="sidebar" class="sidebar-toggle">
+        <aside id="sidebar" class="sidebar-toggle rounded-4">
             <?php include_once 'sidebar.php'; ?>
         </aside>
         <div id="overlay"></div>
         <!-- fim da sidebar -->
         <!-- conteudo -->
         <div class="main">
-            <nav class="navbar navbar-expand border-bottom d-flex justify-content-between">
+            <nav class="navbar navbar-expand border-bottom d-flex justify-content-between rounded-4">
                 <button class="toggler-btn" type="button">
                     <i class="fa-solid fa-bars"></i>
                 </button>
