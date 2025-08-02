@@ -19,8 +19,8 @@
         <div id="overlay"></div>
         <!-- fim da sidebar -->
         <!-- conteudo -->
-        <div class="main">
-            <nav class="navbar navbar-expand border-bottom d-flex justify-content-between rounded-4">
+        <div class="main rounded-4">
+            <nav class="navbar navbar-expand border-bottom d-flex justify-content-between">
                 <button class="toggler-btn" type="button">
                     <i class="fa-solid fa-bars"></i>
                 </button>

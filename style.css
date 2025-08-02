@@ -21,6 +21,8 @@ a{
     /* cor background do conteudo */
     background-color: #f9f9f9;
     margin-right: 7px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .navbar{
