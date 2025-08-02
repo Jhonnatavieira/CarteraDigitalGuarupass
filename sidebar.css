@@ -1,0 +1,8 @@
+#sidebar{
+    max-width: 264px;
+    min-width: 264px;
+    transition: all 0.35s ease-in-out;
+    /* colocar background color */
+    display: flex;
+    flex-direction: column;
+}

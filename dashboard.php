@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>sidebar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-  </head>
+    <link rel="stylesheet" href="style.css">
+</head>
   <body>
     <div class="d-flex">
         <!-- sidebar -->
@@ -19,10 +20,14 @@
                 <button class="toggler-btn" type="button">
                     button
                 </button>
-                <main>
-                    
-                </main>
             </nav>
+            <main class="p-3">
+                    <div class="container-fluid">
+                        <div class="mb-3 text-center">
+                            <h1>sidebar demo</h1>
+                        </div>
+                    </div>
+                </main>
            </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>

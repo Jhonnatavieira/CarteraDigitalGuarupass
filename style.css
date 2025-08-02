@@ -1,0 +1,19 @@
+@import url('sidebar.css');
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.main{
+    /* tamanho */
+    min-height: 100vh;
+    width: 100%;
+
+    overflow: hidden;
+
+    /* cor background do conteudo */
+    background-color: #f9f9f9;
+}
