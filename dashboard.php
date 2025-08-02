@@ -16,6 +16,7 @@
         <aside id="sidebar" class="sidebar-toggle">
             <?php include_once 'sidebar.php'; ?>
         </aside>
+        <div id="overlay"></div>
         <!-- fim da sidebar -->
         <!-- conteudo -->
         <div class="main">
