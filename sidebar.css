@@ -11,7 +11,22 @@
 #sidebar.collapsed{
     margin-left: -264px;
 }
-
+.sidebar-logo{
+    padding: 1.15rem 1.5rem;
+    text-align: center;
+}
+.sidebar-logo a{
+    color: #1d1d1d;
+}
+.sidebar-header{
+    color: #1d1d1d;
+    padding: 1.5rem 1.5rem .375rem;
+}
+a.sidebar-link{
+    padding: .625rem 1.625rem;
+    color: #1d1d1d;
+    
+}
 .toggler-btn{
     background-color: transparent;
     cursor: pointer;
@@ -23,6 +38,14 @@
     color: #1d1d1d;
     font-weight: bold;
 }
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 576px){
     /* TRANSFORMA A SIDEBAR EM GAVETA FLUTUANTE */
