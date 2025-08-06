@@ -44,7 +44,7 @@
                             $tela = isset($_GET['tela']) ? $_GET['tela'] : 'dashboard';
 
                             if ($tela == 'dashboard') {
-                                include_once 'frm_dasboard.php';
+                                include_once 'frm_dashboard.php';
                             }
                         ?>
                     </div>

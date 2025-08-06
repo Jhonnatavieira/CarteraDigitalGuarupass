@@ -20,7 +20,7 @@
     </li>
     <li class="sidebar-item">
         <a href="?tela=carteira" class="sidebar-link" data-page="frm_carteira">
-            <span class=" <?= $telaAtual === 'carteira' ? 'active-wallet' : ''?>"><i class="fa-solid fa-house"></i> Carteira</span>
+            <span class=" <?= $telaAtual === 'carteira' ? 'active-wallet' : ''?>"><i class="fa-solid fa-wallet"></i> Carteirinhas</span>
         </a>
     </li>
 </ul>
