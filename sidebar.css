@@ -35,12 +35,22 @@
 .sidebar-header{
     color: #1d1d1d;
     padding: 1.5rem 1.5rem .375rem;
+    margin-left: 1.5rem;
 }
 a.sidebar-link{
     padding: .625rem 1.625rem;
     color: #1d1d1d;
     transition: all 0.35s;
     position: relative;
+}
+li.sidebar-item{
+    text-align: center;
+}
+.active-dashboard{
+    color: #f9f9f9;
+    background-color: #289ACF;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 .toggler-btn{
     background-color: transparent;

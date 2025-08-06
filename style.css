@@ -1,6 +1,7 @@
 @import url('sidebar.css');
+@import url('frm_dashboard.css');
 
-body{
+body {
     background-color: #dcdcdc;
 
     /* impede o scroll para todas as direções */
@@ -8,14 +9,15 @@ body{
     padding: 7px;
 }
 
-li{
+li {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
-.main{
+.main {
     /* tamanho */
     height: 100vh;
     width: 100%;
@@ -25,14 +27,23 @@ a{
     overflow: hidden auto;
 
     /* cor background do conteudo */
-    background-color: #efefef;
+    background-color: #EDEDED;
 }
 
-.navbar{
+.main-container {
+    background-color: transparent;
+    padding: 20px;
+}
+
+.navbar {
     padding: 1.15rem 1.15rem;
 
     /* posição da navbar */
     position: sticky;
     top: 0;
-    background-color: #f9f9f9;
+    border-radius: 20px;
+    background-color: #f7f7f7;
+    box-shadow: 5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+
 }
