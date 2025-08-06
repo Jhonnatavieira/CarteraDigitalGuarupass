@@ -1,3 +1,6 @@
+<?php 
+    $telaAtual = $_GET['tela'] ?? 'dashboard';
+?>
 <!-- sidebar -->
 
 <div class="sidebar-logo">
@@ -11,9 +14,13 @@
     </li>
     <!-- itens da navegação -->
     <li class="sidebar-item">
-        <a href="" class="sidebar-link">
-            
-            <span class="active-dashboard"><i class="fa-solid fa-house"></i> Dashboard</span>
+        <a href="?tela=dashboard" class="sidebar-link">
+            <span class=" <?= $telaAtual === 'dashboard' ? 'active-dashboard' : ''?>"><i class="fa-solid fa-house"></i> Dashboard</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a href="?tela=carteira" class="sidebar-link">
+            <span class=" <?= $telaAtual === 'carteira' ? 'active-dashboard' : ''?>"><i class="fa-solid fa-house"></i> Dashboard</span>
         </a>
     </li>
 </ul>

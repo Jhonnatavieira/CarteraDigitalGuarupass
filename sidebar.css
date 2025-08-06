@@ -45,6 +45,7 @@ a.sidebar-link{
 }
 li.sidebar-item{
     text-align: center;
+    margin-bottom: 20px;
 }
 .active-dashboard{
     color: #f9f9f9;
