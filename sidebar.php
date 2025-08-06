@@ -14,13 +14,33 @@
     </li>
     <!-- itens da navegação -->
     <li class="sidebar-item">
-        <a href="?tela=dashboard" class="sidebar-link" data-page="frm_dashboard">
-            <span class=" <?= $telaAtual === 'dashboard' ? 'active-dashboard' : ''?>"><i class="fa-solid fa-house"></i> Dashboard</span>
+        <a href="?tela=dashboard" class="sidebar-link <?= $telaAtual === 'dashboard' ? 'active-dashboard text-white' : ''?>">
+            <i class="fa-solid fa-house me-1"></i>
+            <span >Dashboard</span>
         </a>
     </li>
     <li class="sidebar-item">
-        <a href="?tela=carteira" class="sidebar-link" data-page="frm_carteira">
-            <span class=" <?= $telaAtual === 'carteira' ? 'active-wallet' : ''?>"><i class="fa-solid fa-wallet"></i> Carteirinhas</span>
+        <a href="?tela=carteira" class="sidebar-link <?= $telaAtual === 'carteira' ? 'active-wallet text-white' : ''?>">
+            <i class="fa-solid fa-wallet"></i>
+            <span >Carteirinhas</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a href="?tela=qrcode" class="sidebar-link <?= $telaAtual === 'qrcode' ? 'active-qrcode text-white' : ''?>">
+            <i class="fa-solid fa-qrcode"></i>
+            <span >Qrcode</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a href="?tela=calendario" class="sidebar-link <?= $telaAtual === 'calendario' ? 'active-calendar text-white' : ''?>">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span >Agendamento</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a href="?tela=onibus" class="sidebar-link <?= $telaAtual === 'onibus' ? 'active-bus text-white' : ''?>">
+            <i class="fa-solid fa-bus"></i>
+            <span >Rota</span>
         </a>
     </li>
 </ul>

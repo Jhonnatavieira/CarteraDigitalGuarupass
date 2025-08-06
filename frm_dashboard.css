@@ -1,7 +1,7 @@
 /* === ESTILOS CUSTOMIZADOS === */
         
         /* Container principal */
-        /* Botão Dashboard */
+        /* Botões de indentificação */
         .dashboard-btn {
             background-color: #289ACF;
             color: white;
@@ -11,6 +11,9 @@
             font-weight: 500;
             margin-bottom: 20px;
         }
+
+
+
         
         /* Cards principais */
         .custom-card {
@@ -20,8 +23,15 @@
              -5px -5px 10px #ffffff;
             border: none;
             margin-bottom: 20px;
+            transition: all 0.35s;
+        }
+        .custom-card:hover{
+            transform: scale(1.02);
+            box-shadow:  8px 8px 10px #bebebe,
+             -8px -8px 10px #ffffff;
         }
         
+        /* --------------------------- */
         /* Seção do cartão físico */
         .card-section {
             padding: 20px;
@@ -73,9 +83,10 @@
             margin-top: 15px;
         }
         
+        /* --------------------------- */
         /* Informações do cartão */
         .card-info {
-            padding: 20px;
+            padding: 10px;
         }
         
         .card-number {
@@ -99,6 +110,8 @@
             margin-top: 10px;
         }
         
+
+        /* --------------------------- */
         /* Histórico de atividades */
         .activity-section {
             padding: 20px;
@@ -127,15 +140,6 @@
             margin-right: 15px;
         }
         
-        .bus-icon {
-            background-color: #3498db;
-            color: white;
-        }
-        
-        .pix-icon {
-            background-color: #27ae60;
-            color: white;
-        }
         
         .activity-details h6 {
             margin: 0;
