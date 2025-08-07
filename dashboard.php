@@ -45,6 +45,8 @@
 
                             if ($tela == 'dashboard') {
                                 include_once 'frm_dashboard.php';
+                            }elseif ($tela == 'carteira') {
+                                include_once 'frm_carteira.php';
                             }
                         ?>
                     </div>

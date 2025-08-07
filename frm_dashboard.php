@@ -62,8 +62,8 @@
                         <div class="row w-100">
                             <div class="col-8 col-md-9">
                                 <div class="d-flex align-items-center flex-grow-1 gap-2">
-                                    <div class="activity-icon bus-icon">
-                                        <i class="bi bi-bus-front"></i>
+                                    <div class="activity-icon">
+                                        <i class="fa-solid fa-bus" style="color: #fafafa;"></i>
                                     </div>
                                     <div class="activity-details">
                                         <h6 class="text-start">Linha: 552</h6>
@@ -83,7 +83,7 @@
                             <div class="col-8 col-md-9">
                                 <div class="d-flex align-items-center flex-grow-1 gap-2">
                                     <div class="activity-icon pix-icon">
-                                        <i class="bi bi-plus-lg"></i>
+                                        <i class="fa-brands fa-pix" style="color: #fafafa;"></i>
                                     </div>
                                     <div class="activity-details">
                                         <h6 class="text-start">Pix:</h6>
@@ -104,7 +104,7 @@
                             <div class="col-8 col-md-9">
                                 <div class="d-flex align-items-center flex-grow-1 gap-2">
                                     <div class="activity-icon bus-icon">
-                                        <i class="bi bi-bus-front"></i>
+                                       <i class="fa-solid fa-bus" style="color: #fafafa;"></i>
                                     </div>
                                     <div class="activity-details">
                                         <h6 class="text-start">Linha: 552</h6>
@@ -124,7 +124,7 @@
                             <div class="col-8 col-md-9">
                                 <div class="d-flex align-items-center flex-grow-1 gap-2">
                                     <div class="activity-icon bus-icon">
-                                        <i class="bi bi-bus-front"></i>
+                                        <i class="fa-solid fa-bus" style="color: #fafafa;"></i>
                                     </div>
                                     <div class="activity-details">
                                         <h6 class="text-start">Linha: 552</h6>
