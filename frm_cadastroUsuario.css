@@ -1,0 +1,53 @@
+    /* ===== CONFIGURAÇÕES PERSONALIZADAS ===== */
+    body {
+      /* Mantém o mesmo fundo gradiente da imagem */
+      background: linear-gradient(135deg, #e8d5f2 0%, #a8e6cf 100%);
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* ===== CUSTOMIZAÇÕES DO BOOTSTRAP ===== */
+    .card-custom {
+      border-radius: 20px;
+      /* Bordas mais arredondadas que o padrão */
+      border: none;
+      /* Remove borda padrão */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      /* Sombra personalizada */
+    }
+
+    .form-control {
+      border-radius: 8px;
+      /* Bordas dos campos menos arredondadas */
+      border: 2px solid #ddd;
+      /* Borda mais espessa */
+      padding: 12px 15px;
+      /* Padding customizado */
+    }
+
+    .form-control:focus {
+      border-color: #17a2b8;
+      /* Cor de foco personalizada */
+      box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+      /* Sombra de foco */
+    }
+
+    .btn-custom {
+      background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      padding: 12px 30px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(23, 162, 184, 0.3);
+    }
+
+    .logo-svg {
+      max-width: 200px;
+      height: auto;
+    }
