@@ -51,7 +51,7 @@
                 </div>
                 
                 <!-- COLUNA DIREITA: ILUSTRAÇÃO -->
-                <div class="col-lg-6">
+                <div class="col-lg-6 d-none d-md-none d-lg-block">
                     <div class="illustration-container">
                         <img src="img/FotoLoginSemFundo.png" alt="" style="height: 400px;">
                     </div>

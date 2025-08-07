@@ -29,7 +29,7 @@
       <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 w-100 d-flex justify-content-center align-items-center">
 
         <!-- CARD BOOTSTRAP CUSTOMIZADO -->
-        <div class="card card-custom w-50">
+        <div class="card card-custom" style="width: 50rem;">
           <div class="card-body p-4 p-md-5">
 
 

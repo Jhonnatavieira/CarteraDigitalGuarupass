@@ -218,4 +218,8 @@
                 margin-right: 0;
                 margin-bottom: 10px;
             }
+
+            .custom-card:hover{
+                transform: scale(1);
+            }
         }
