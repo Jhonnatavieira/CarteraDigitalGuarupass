@@ -1,6 +1,8 @@
 @import url('sidebar.css');
 @import url('frm_dashboard.css');
 @import url('frm_carteira.css');
+@import url('frm_qrcode.css');
+
 
 body {
     background-color: #dcdcdc;
