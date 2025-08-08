@@ -2,7 +2,7 @@
     <div class="container-fluid">
                     <button class="carteira-btn">Carteira</button>
                 </div>
-    <div class="container-fluid">
+    <div id="card-container" class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
 

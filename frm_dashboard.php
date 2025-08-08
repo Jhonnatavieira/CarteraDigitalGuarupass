@@ -5,10 +5,10 @@
     <!-- Coluna Esquerda - Cartões e Histórico -->
     <div class="col-lg-8">
         <!-- Seção de Cartões -->
-        <div class="row justify-content-center align-items-center gap-5 mb-4">
+        <div class="row d-flex justify-content-center align-items-center gap-5 mb-4">
             <!-- Cartão Físico -->
             <div class="col-md-5">
-                <div class="custom-card">
+                <div class="">
                     <h6 class="mb-2 text-start">Cartões</h6>
                     <div
                         class="card-section d-flex justify-content-center align-items-center flex-column">
