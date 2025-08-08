@@ -1,0 +1,391 @@
+
+/* Estilização do header da carteira */
+.wallet-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.wallet-title {
+    background: linear-gradient(45deg, #ff8c42, #ffa726);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+}
+
+/* Seção do carrossel */
+.carousel-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização do cartão principal */
+.card-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.main-card {
+    background: linear-gradient(135deg, #ff8c42, #ffa726);
+    border-radius: 20px;
+    padding: 2rem;
+    min-height: 200px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho no cartão */
+.main-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo da escola (lado esquerdo) */
+.school-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.school-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Logo secundário (lado direito) */
+.secondary-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-badge {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff6b35;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Controles do carrossel personalizados */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 140, 66, 0.1);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    backdrop-filter: blur(10px);
+}
+
+.carousel-control-prev {
+    left: -25px;
+}
+
+.carousel-control-next {
+    right: -25px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 20px 20px;
+    filter: invert(1);
+}
+
+/* Botões de ação */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-nfc,
+.btn-balance {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.btn-nfc {
+    background: linear-gradient(45deg, #ff8c42, #ffa726);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+}
+
+.btn-nfc:hover {
+    background: linear-gradient(45deg, #ff7a2b, #ff9800);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+    color: white;
+}
+
+.btn-balance {
+    background: linear-gradient(45deg, #ff8c42, #ffa726);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+}
+
+.btn-balance:hover {
+    background: linear-gradient(45deg, #ff7a2b, #ff9800);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+    color: white;
+}
+
+/* Seção de transações */
+.transactions-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    max-height: 18.31375rem;
+     scrollbar-width: none;
+}
+
+.transactions-title {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Lista de transações */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.transaction-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+/* Ícone da transação */
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #ff8c42, #ffa726);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+
+}
+
+/* Detalhes da transação */
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.transaction-date {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Valor da transação */
+.transaction-amount {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: right;
+}
+
+.transaction-amount.positive {
+    color: #28a745;
+}
+
+.transaction-amount.negative {
+    color: #dc3545;
+}
+
+/* Estilização dos modais */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background: linear-gradient(45deg, #ff8c42, #ffa726);
+    color: white;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+/* Animação NFC */
+.nfc-animation {
+    margin: 2rem 0;
+}
+
+.nfc-icon {
+    font-size: 4rem;
+    color: #ff8c42;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Display do saldo */
+.balance-display {
+    margin: 2rem 0;
+}
+
+.balance-amount {
+    font-size: 3rem;
+    color: #28a745;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.balance-description {
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.balance-details {
+    margin-top: 1rem;
+}
+
+.balance-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.carteira-btn {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+/* Responsividade para desktop */
+@media (min-width: 768px) {
+    .container-fluid {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    /* Aumentar o tamanho dos botões em desktop */
+    .btn-nfc,
+    .btn-balance {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+        min-width: 160px;
+    }
+    
+    /* Melhor espaçamento para desktop */
+    .action-buttons {
+        gap: 25px;
+        margin-top: 2.5rem;
+    }
+    
+    /* Modal maior em desktop */
+    .modal-dialog {
+        max-width: 600px;
+    }
+}
+
+/* Efeitos hover adicionais para desktop */
+@media (hover: hover) {
+    .transaction-item:hover .transaction-icon {
+        transform: scale(1.1);
+    }
+    
+    .main-card:hover {
+        transform: translateY(-5px);
+    }
+}
