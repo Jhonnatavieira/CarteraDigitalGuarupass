@@ -354,7 +354,7 @@
 
 /* Responsividade para desktop */
 @media (min-width: 768px) {
-    .container-fluid {
+    #card-container {
         max-width: 1200px;
         margin: 0 auto;
     }
