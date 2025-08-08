@@ -5,10 +5,10 @@
     <!-- Coluna Esquerda - Cartões e Histórico -->
     <div class="col-lg-8">
         <!-- Seção de Cartões -->
-        <div class="row d-flex justify-content-center align-items-center gap-5 mb-4">
+        <div class="row d-flex justify-content-center align-items-center gap-5">
             <!-- Cartão Físico -->
             <div class="col-md-5">
-                <div class="">
+                <div>
                     <h6 class="mb-2 text-start">Cartões</h6>
                     <div
                         class="card-section d-flex justify-content-center align-items-center flex-column">
@@ -143,15 +143,16 @@
     </div>
 
     <!-- Coluna Direita - Espaço para futuras funcionalidades e Gráfico -->
-    <div class="col-lg-4">
+    <div class="col-lg-4 d-none d-md-none d-lg-block">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center mb-lg-3">
+            <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
                 <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card" style="height: 225px; width: 25.75rem;">
+                <div class="custom-card" style="height: 200px; width: 25.75rem;">
                     <!-- Espaço reservado para futuras funcionalidades -->
                 </div>
             </div>
-
+        </div>
+        <div class="row">
             <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
                 <!-- Gráfico Circular -->
                 <div class="custom-card" style="height: 395px; width: 25.75rem;">
