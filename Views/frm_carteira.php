@@ -110,7 +110,7 @@
     <div class="modal fade" id="nfcModal" tabindex="-1" aria-labelledby="nfcModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header-wallet">
                     <h5 class="modal-title" id="nfcModalLabel">
                         <i class="bi bi-broadcast"></i> Função NFC
                     </h5>

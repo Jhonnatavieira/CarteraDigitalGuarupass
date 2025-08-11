@@ -275,11 +275,16 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-.modal-header {
+.modal-header-wallet {
     background: linear-gradient(45deg, #ff8c42, #ffa726);
     color: white;
     border-radius: 20px 20px 0 0;
     border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    
 }
 
 .modal-title {
