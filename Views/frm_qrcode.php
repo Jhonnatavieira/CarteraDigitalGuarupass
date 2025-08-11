@@ -1,6 +1,6 @@
 
     <!-- Container principal -->
-    <div class="main-container">
+    <div>
         
         <!-- ===== HEADER ===== -->
         <div class="header">
