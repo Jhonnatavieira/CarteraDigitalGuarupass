@@ -1,62 +1,64 @@
 
     <!-- Container principal -->
-    <div>
+    <div class="container-fluid p-0">
         
         <!-- ===== HEADER ===== -->
-        <div class="header">
-            QrCode
-        </div>
+        <!-- Botão Dashboard -->
+<button class="qrcode-btn">QRCode</button>
         
         <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-        <div id="qrcodeContainer">
-            
-            <!-- ===== SEÇÃO QR CODE (ESQUERDA) ===== -->
-            <div class="qr-section">
-                <div class="qr-container">
-                    <!-- QR Code simulado com padrão visual -->
-                    <div class="qr-code">
-                        <div class="qr-corner top-left"></div>
-                        <div class="qr-corner top-right"></div>
-                        <div class="qr-corner bottom-left"></div>
-                        <!-- Padrão de dados simulado -->
-                        <div class="qr-pattern" style="width: 20px; height: 20px; top: 90px; left: 50px;"></div>
-                        <div class="qr-pattern" style="width: 15px; height: 15px; top: 120px; left: 80px;"></div>
-                        <div class="qr-pattern" style="width: 25px; height: 10px; top: 100px; right: 60px;"></div>
-                        <div class="qr-pattern" style="width: 10px; height: 30px; bottom: 80px; left: 70px;"></div>
-                        <div class="qr-pattern" style="width: 18px; height: 18px; bottom: 90px; right: 50px;"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                
+                <!-- ===== QR CODE CARD ===== -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="qr-card text-center">
+                        <!-- QR Code simulado -->
+                        <div class="qr-code">
+                            <div class="qr-corner top-left"></div>
+                            <div class="qr-corner top-right"></div>
+                            <div class="qr-corner bottom-left"></div>
+                            <!-- Padrão de dados simulado -->
+                            <div class="qr-pattern" style="width: 15px; height: 15px; top: 60px; left: 30px;"></div>
+                            <div class="qr-pattern" style="width: 10px; height: 10px; top: 80px; left: 50px;"></div>
+                            <div class="qr-pattern" style="width: 20px; height: 8px; top: 65px; right: 35px;"></div>
+                            <div class="qr-pattern" style="width: 8px; height: 25px; bottom: 50px; left: 40px;"></div>
+                            <div class="qr-pattern" style="width: 12px; height: 12px; bottom: 60px; right: 30px;"></div>
+                        </div>
+                        
+                        <!-- Botões de ação -->
+                        <div class="d-flex flex-column gap-2">
+                            <button class="action-btn" data-bs-toggle="modal" data-bs-target="#qrModal">
+                                Mostrar QRCode
+                            </button>
+                            <button class="action-btn" data-bs-toggle="modal" data-bs-target="#purchaseModal">
+                                Comprar QRCode
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Botões de ação -->
-                <div class="action-buttons">
-                    <button class="action-btn" data-bs-toggle="modal" data-bs-target="#qrModal">
-                        Mostrar QRCode
-                    </button>
-                    <button class="action-btn" data-bs-toggle="modal" data-bs-target="#purchaseModal">
-                        Comprar QRCode
-                    </button>
-                </div>
-            </div>
-            
-            <!-- ===== SEÇÃO PAGAMENTO (DIREITA) ===== -->
-            <div class="payment-section">
-                <div class="payment-card">
-                    <!-- Header do card -->
-                    <div class="payment-header">
-                        <h3 class="payment-title">Forma de pagamento</h3>
-                        <button class="change-btn" data-bs-toggle="modal" data-bs-target="#paymentModal">
-                            Mudar
-                        </button>
-                    </div>
-                    
-                    <!-- Método selecionado -->
-                    <div class="payment-method">
-                        <div class="pix-icon">
-                            <i class="bi bi-lightning-fill"></i>
+                <!-- ===== PAYMENT CARD ===== -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="payment-card">
+                        <!-- Header do card -->
+                        <div class="payment-header">
+                            <h3 class="payment-title">Forma de pagamento</h3>
+                            <button class="change-btn" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                                Mudar
+                            </button>
                         </div>
-                        <span class="payment-name">Pix</span>
+                        
+                        <!-- Método selecionado -->
+                        <div class="payment-method">
+                            <div class="pix-icon">
+                                <i class="bi bi-lightning-fill"></i>
+                            </div>
+                            <span class="payment-name">Pix</span>
+                        </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -67,8 +69,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="qrModalLabel">
-                        <i class="bi bi-qr-code"></i>
-                        Mostrar QR Code
+                        <i class="bi bi-qr-code me-2"></i>
+                        QrCode
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
@@ -85,14 +87,32 @@
                             <div class="qr-pattern" style="width: 18px; height: 18px; bottom: 90px; right: 50px;"></div>
                         </div>
                     </div>
-                    <h6 class="mb-3">QR Code gerado com sucesso</h6>
-                    <p class="text-muted">Utilize este código para realizar pagamentos</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn" style="background-color: #22c55e; color: white;">
-                        <i class="bi bi-download me-2"></i>Baixar QR Code
-                    </button>
+                    
+                    <!-- Botões de ação do modal -->
+                    <div class="d-flex flex-column gap-2">
+                        <button class="action-btn w-100">
+                            Mostrar QRCode
+                        </button>
+                        <button class="action-btn w-100">
+                            Comprar QRCode
+                        </button>
+                    </div>
+                    
+                    <!-- Forma de pagamento no modal -->
+                    <div class="mt-4">
+                        <p class="mb-2 text-start small">Forma de pagamento</p>
+                        <div class="d-flex align-items-center justify-content-between p-2 border rounded">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="pix-icon" style="width: 30px; height: 30px;">
+                                    <i class="bi bi-lightning-fill"></i>
+                                </div>
+                                <span class="payment-name">Pix</span>
+                            </div>
+                            <button class="change-btn btn btn-sm" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                                Mudar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,7 +124,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="purchaseModalLabel">
-                        <i class="bi bi-cart-plus"></i>
+                        <i class="bi bi-cart-plus me-2"></i>
                         Comprar QR Code
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
@@ -159,7 +179,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="paymentModalLabel">
-                        <i class="bi bi-credit-card"></i>
+                        <i class="bi bi-credit-card me-2"></i>
                         Formas de Pagamento
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
@@ -209,8 +229,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        /* ===== JAVASCRIPT PARA FUNCIONALIDADES ===== */
-        
         let selectedPaymentMethod = 'PIX';
         
         // Função para selecionar método de pagamento
@@ -234,62 +252,19 @@
         
         // Função para atualizar método na interface
         function updatePaymentMethod() {
-            const paymentName = document.querySelector('.payment-name');
-            const pixIcon = document.querySelector('.pix-icon i');
+            const paymentNames = document.querySelectorAll('.payment-name');
+            const pixIcons = document.querySelectorAll('.pix-icon i');
             
-            paymentName.textContent = selectedPaymentMethod;
+            paymentNames.forEach(name => {
+                name.textContent = selectedPaymentMethod;
+            });
             
-            if (selectedPaymentMethod === 'PIX') {
-                pixIcon.className = 'bi bi-lightning-fill';
-            } else {
-                pixIcon.className = 'bi bi-credit-card';
-            }
-            
-            // Toast de confirmação
-            showToast(`Forma de pagamento alterada para ${selectedPaymentMethod}`);
-        }
-        
-        // Função para mostrar toast
-        function showToast(message) {
-            // Cria elemento toast
-            const toastHtml = `
-                <div class="toast position-fixed top-0 end-0 m-3" role="alert">
-                    <div class="toast-header" style="background-color: #22c55e; color: white;">
-                        <i class="bi bi-check-circle me-2"></i>
-                        <strong class="me-auto">Sucesso</strong>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-                    </div>
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                </div>
-            `;
-            
-            // Adiciona ao DOM
-            document.body.insertAdjacentHTML('beforeend', toastHtml);
-            
-            // Mostra toast
-            const toastElement = document.querySelector('.toast:last-child');
-            const toast = new bootstrap.Toast(toastElement);
-            toast.show();
-            
-            // Remove após ocultar
-            toastElement.addEventListener('hidden.bs.toast', () => {
-                toastElement.remove();
+            pixIcons.forEach(icon => {
+                if (selectedPaymentMethod === 'PIX') {
+                    icon.className = 'bi bi-lightning-fill';
+                } else {
+                    icon.className = 'bi bi-credit-card';
+                }
             });
         }
-        
-        // Animações hover nos botões
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-                this.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-            });
-        });
     </script>
-

@@ -140,13 +140,20 @@
         </div>
     </div>
 
+    <!-- Graficos e saldo -->
     <!-- Coluna Direita - Espaço para futuras funcionalidades e Gráfico -->
     <div class="col-lg-4">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
                 <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card" style="height: 200px; width: 25.75rem;">
+                <div class="custom-card d-flex justify-content-center align-items-center flex-column" style="height: 200px; width: 19.75rem;">
                     <!-- Espaço reservado para futuras funcionalidades -->
+                        <div class="saldo-icon">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+
+                        <h3 class="saldo-title">Saldo</h3>
+                        <p class="saldo-value">R$ 10,00</p>
                 </div>
             </div>
 
