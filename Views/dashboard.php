@@ -49,6 +49,8 @@
                                 include_once 'frm_carteira.php';
                             } elseif ($tela == 'qrcode') {
                                 include_once 'frm_qrcode.php';
+                            } elseif ($tela == 'agendamento') {
+                                include_once 'frm_agendamento.php';
                             }
                         ?>
                     </div>

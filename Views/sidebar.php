@@ -32,7 +32,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a href="?tela=calendario" class="sidebar-link <?= $telaAtual === 'calendario' ? 'active-calendar text-white' : ''?>">
+        <a href="?tela=agendamento" class="sidebar-link <?= $telaAtual === 'agendamento' ? 'active-calendar text-white' : ''?>">
             <i class="fa-solid fa-calendar-days"></i>
             <span >Agendamento</span>
         </a>
