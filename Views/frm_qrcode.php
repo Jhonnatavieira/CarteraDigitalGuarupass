@@ -8,7 +8,7 @@
         </div>
         
         <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-        <div class="main-content">
+        <div id="qrcodeContainer">
             
             <!-- ===== SEÇÃO QR CODE (ESQUERDA) ===== -->
             <div class="qr-section">

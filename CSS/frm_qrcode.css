@@ -8,7 +8,7 @@
         }
         
         /* Container principal */
-        .main-container {
+        #qrcodeContainer {
             max-width: 800px;
             margin: 0 auto;
             border-radius: 12px;
