@@ -14,19 +14,19 @@
                             <!-- Primeiro slide do carrossel -->
                             <div class="carousel-item active">
                                 <div class="card-container">
-                                    <img src="img/Cartão-png/Escolar Aluno.png" alt="">
+                                    <img src="../img/Cartão-png/Escolar Aluno.png" alt="">
                                 </div>
                             </div>
                             <!-- Segundo slide (exemplo de mais conteúdo) -->
                             <div class="carousel-item">
                                 <div class="card-container">
-                                    <img src="img/Cartão-png/Vale-Transporte.png" alt="">
+                                    <img src="../img/Cartão-png/Vale-Transporte.png" alt="">
                                 </div>
                             </div>
 
                             <div class="carousel-item">
                                 <div class="card-container">
-                                    <img src="img/Cartão-png/Cidadão.png" alt="">
+                                    <img src="../img/Cartão-png/Cidadão.png" alt="">
                                 </div>
                             </div>
                         </div>

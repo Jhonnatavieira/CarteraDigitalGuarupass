@@ -4,7 +4,7 @@
 <!-- sidebar -->
 
 <div class="sidebar-logo">
-    <a href="" class="img-thumbnail"><img src="./img/loog-site-tamanho-2.png" alt="" style="height: 50px;"></a>
+    <a href="" class="img-thumbnail"><img src="../img/loog-site-tamanho-2.png" alt="" style="height: 50px;"></a>
 </div>
 
 <!-- navegação da sidebar -->

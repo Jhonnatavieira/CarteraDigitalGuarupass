@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- BOOTSTRAP ICONS (para ícones nos campos) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="frm_cadastroUsuario.css">
+  <link rel="stylesheet" href="../CSS/frm_cadastroUsuario.css">
 
 </head>
 
