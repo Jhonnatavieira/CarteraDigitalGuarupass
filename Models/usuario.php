@@ -80,11 +80,7 @@ class usuario
     }
     public function setData(DateTimeImmutable $data): void
     {
-        try {
-            $this->data = $data;
-        } catch (Exception $e) {
-            throw new InvalidArgumentException("Data inválida: " . $e->getMessage());
-        }
+        $this->data = $data;
     }
     public function setEmail(string $email): void
     {
@@ -138,25 +134,53 @@ class usuario
                     VALUES (:nome, :usuario, :email, :senha, :cpf, :data, :telefone, :saldo, :status)";
             $stmt = $this->pdo->prepare($sql);
 
+
+            // Associa (bind) TODOS os valores para o INSERT
+            $stmt->bindValue(':nome', $this->nome);
+            $stmt->bindValue(':usuario', $this->usuario);
+            $stmt->bindValue(':email', $this->email);
+            $stmt->bindValue(':senha', $this->senha);
+            $stmt->bindValue(':cpf', $this->cpf); // CPF é incluído no INSERT
+            $stmt->bindValue(':data', $this->data->format('Y-m-d H:i:s'));
+            $stmt->bindValue(':telefone', $this->telefone);
+            $stmt->bindValue(':saldo', $this->saldo);
+            $stmt->bindValue(':status', $this->status->value);
             //formata a data
             $stmt->bindValue(':data', $this->data->format('Y-m-d H:i:s'));
             $stmt->bindValue(':status', $this->status->value); // .value pega o valor string do Enum
 
+            $sucesso = $stmt->execute();
+
+            // Se o INSERT deu certo, atualiza o ID do objeto
+            if ($sucesso) {
+                $this->id_usuario = (int)$this->pdo->lastInsertId();
+            }
+            return $sucesso;
         } else {
-            $sql = "UPDATE usuario SET nome = :nome, usuario = :usuario, email = :email, telefone = :telefone WHERE id_usuario = :id_usuario";
+
+            $sql = "UPDATE usuario SET 
+                    nome = :nome, 
+                    usuario = :usuario, 
+                    email = :email, 
+                    telefone = :telefone,
+                    saldo = :saldo, 
+                    status = :status 
+                WHERE id_usuario = :id_usuario";
+
+            $stmt = $this->pdo->prepare($sql);
+
+            // Associa (bind) apenas os valores necessários para o UPDATE
+            $stmt->bindValue(':nome', $this->nome);
+            $stmt->bindValue(':usuario', $this->usuario);
+            $stmt->bindValue(':email', $this->email);
+            $stmt->bindValue(':telefone', $this->telefone);
+            $stmt->bindValue(':saldo', $this->saldo);
+            $stmt->bindValue(':status', $this->status->value);
+            $stmt->bindValue(':id_usuario', $this->id_usuario, PDO::PARAM_INT); // O ID para o WHERE
+
+            // Executa e retorna o resultado
+            return $stmt->execute();
         }
-
-
-        // associa as outras variaveis
-        $stmt->bindValue(':nome', $this->nome);
-        $stmt->bindValue(':usuario', $this->usuario);
-        $stmt->bindValue(':email', $this->email);
-        $stmt->bindValue(':senha', $this->senha);
-        $stmt->bindValue(':cpf', $this->cpf);
-        $stmt->bindValue(':telefone', $this->telefone);
-        $stmt->bindValue(':saldo', $this->saldo);
-
-        return $stmt->execute();
     }
 
     /**
@@ -167,7 +191,7 @@ class usuario
      */
     public static function buscarPorId(int $id, PDO $pdo): ?self
     {
-        
+
         $sql = "SELECT * FROM usuario WHERE id_usuario = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$id]);
