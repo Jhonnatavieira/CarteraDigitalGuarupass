@@ -1,3 +1,4 @@
+<?php include_once("../Controllers/usuario_controller.php"); ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,7 +21,7 @@
     <div class="row mb-4">
       <div class="col">
         <!-- LOGO CENTRALIZADA -->
-        <img src="./img/loog-site-tamanho-2.png" alt="">
+        <img src="../img/loog-site-tamanho-2.png" alt="">
       </div>
     </div>
     <!-- ROW PARA CENTRALIZAÇÃO -->
@@ -34,7 +35,7 @@
 
 
             <!-- FORMULÁRIO COM BOOTSTRAP -->
-            <form id="cadastroForm" novalidate>
+            <form id="cadastroForm" action="usuario_controller.html" method="POST" novalidate>
 
               <!-- PRIMEIRA LINHA: NOME E SENHA (BOOTSTRAP GRID) -->
               <div class="row g-3 mb-3">
@@ -120,7 +121,7 @@
 
               <!-- BOTÃO DE CADASTRO COM BOOTSTRAP -->
               <div class="d-grid d-md-flex justify-content-md-end">
-                <button type="submit" class="btn btn-custom btn-lg text-white px-4">
+                <button formaction="../Controllers/usuario_controller.php" class="btn btn-custom btn-lg text-white px-4">
                   <i class="bi bi-person-plus me-2"></i>
                   Cadastrar
                 </button>
@@ -167,86 +168,6 @@
       aplicarMascaraTelefone(e.target);
     });
 
-    // ===== VALIDAÇÃO COM BOOTSTRAP =====
-
-    // Obtém o formulário
-    const form = document.getElementById('cadastroForm');
-
-    // Adiciona listener para o submit
-    form.addEventListener('submit', function (event) {
-      // Verifica se o formulário é válido
-      if (!form.checkValidity()) {
-        event.preventDefault(); // Previne o envio
-        event.stopPropagation(); // Para a propagação
-      } else {
-        event.preventDefault(); // Previne o envio real (para demonstração)
-
-        // Coleta os dados (usando FormData do Bootstrap)
-        const formData = new FormData(form);
-        const dados = Object.fromEntries(formData);
-
-        console.log('Dados coletados:', dados);
-
-        // Mostra toast de sucesso (componente Bootstrap)
-        mostrarToastSucesso();
-      }
-
-      // Adiciona classe de validação do Bootstrap
-      form.classList.add('was-validated');
-    });
-
-    // ===== TOAST DE SUCESSO BOOTSTRAP =====
-
-    function mostrarToastSucesso() {
-      // Cria toast dinamicamente
-      const toastHtml = `
-                <div class="toast align-items-center text-white bg-success border-0" role="alert">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            <i class="bi bi-check-circle me-2"></i>
-                            Cadastro realizado com sucesso!
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                    </div>
-                </div>
-            `;
-
-      // Cria container de toast se não existir
-      let toastContainer = document.getElementById('toast-container');
-      if (!toastContainer) {
-        toastContainer = document.createElement('div');
-        toastContainer.id = 'toast-container';
-        toastContainer.className = 'toast-container position-fixed top-0 end-0 p-3';
-        toastContainer.style.zIndex = '1050';
-        document.body.appendChild(toastContainer);
-      }
-
-      // Adiciona o toast
-      toastContainer.innerHTML = toastHtml;
-
-      // Inicializa e mostra o toast
-      const toastElement = toastContainer.querySelector('.toast');
-      const toast = new bootstrap.Toast(toastElement);
-      toast.show();
-    }
-
-    // ===== FEEDBACK VISUAL MELHORADO =====
-
-    // Adiciona feedback visual em tempo real
-    const campos = document.querySelectorAll('.form-control');
-    campos.forEach(campo => {
-      campo.addEventListener('input', function () {
-        // Remove classes anteriores
-        this.classList.remove('is-valid', 'is-invalid');
-
-        // Verifica validade e adiciona classe apropriada
-        if (this.checkValidity() && this.value.trim() !== '') {
-          this.classList.add('is-valid');
-        } else if (this.value.trim() !== '') {
-          this.classList.add('is-invalid');
-        }
-      });
-    });
   </script>
 </body>
 

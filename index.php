@@ -45,7 +45,7 @@
                         <!-- LINK ESQUECEU A SENHA -->
                         <div class="text-center d-flex justify-content-center align-items-center flex-column">
                             <a href="#" class="forgot-password">Esqueceu a senha?</a>
-                            <a href="frm_cadastroUsuario.php" class="forgot-password">Criar conta</a>
+                            <a href="Views/frm_cadastroUsuario.php" class="forgot-password">Criar conta</a>
                         </div>
                     </form>
                 </div>
