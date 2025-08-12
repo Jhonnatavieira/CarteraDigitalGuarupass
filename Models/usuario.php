@@ -92,5 +92,50 @@ class usuario
 
     //========= FIM DOS MÉTODOS SET/GET =========
 
+
+    /**
+     * Salva o usuario no banco ou atualiza
+     * valida a existencia de dados unicos antes de inserir
+     * @return bool Retorna true em caso de sucesso
+     * @throws Exception se o usuário, email ou CPF já existirem no banco
+     */
+    public function salvar() : bool {
+        if ($this->id_usuario === null) {
+            
+            $sqlVerifica = "SELECT id_usuario FROM usuario WHERE usuario = :usuario OR email = :email OR cpf = :cpf";
+            $stmtVerifica = $this -> pdo->prepare( $sqlVerifica);
+            $stmtVerifica->bindValue(':usuario', $this->usuario);
+            $stmtVerifica->bindValue(':email', $this->email);
+            $stmtVerifica->bindValue(':cpf', $this->cpf);
+            $stmtVerifica->execute();
+
+            if ($stmtVerifica->fetch()) {
+                throw new Exception("O nome de usuário, e-mail ou CPF informado já está em uso.");
+            }
+
+            $sql = "INSERT INTO usuario (nome, usuario, email, senha, cpf, data, telefone, saldo, status)
+                    VALUES (:nome, :usuario, :email, :senha, :cpf, :data, :telefone, :saldo, :status)";
+            $stmt = $this->pdo->prepare($sql);
+
+            //formata a data
+            $stmt->bindValue(':data', $this->data->format('Y-m-d H:i:s'));
+            $stmt->bindValue(':status', $this->status->value); // .value pega o valor string do Enum
+
+        }else {
+            $sql = "UPDATE usuario SET nome = :nome, usuario = :usuario, email = :email, telefone = :telefone WHERE id_usuario = :id_usuario";
+        }
+
+
+        // associa as outras variaveis
+        $stmt->bindValue(':nome', $this->nome);
+        $stmt->bindValue(':usuario', $this->usuario);
+        $stmt->bindValue(':email', $this->email);
+        $stmt->bindValue(':senha', $this->senha);
+        $stmt->bindValue(':cpf', $this->cpf);
+        $stmt->bindValue(':telefone', $this->telefone);
+        $stmt->bindValue(':saldo', $this->saldo);
+
+        return $stmt->execute();
+    }
 }
 ?>
