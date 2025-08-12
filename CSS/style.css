@@ -48,6 +48,6 @@ a {
     border-radius: 20px;
     background-color: #f7f7f7;
     box-shadow: 5px 5px 10px #bebebe,
-        -5px -5px 10px #ffffff;
-
+    -5px -5px 10px #ffffff;
+    z-index: 999;
 }
