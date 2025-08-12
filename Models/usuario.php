@@ -5,7 +5,7 @@ require_once 'StatusUsuario.php';
 
 class usuario
 {
-    private ?int $id = null;
+    private ?int $id_usuario = null;
     private string $nome;
     private string $usuario;
     private string $email;
@@ -15,20 +15,18 @@ class usuario
     private string $telefone;
     private float $saldo;
     private StatusUsuario $status;
-    
-    
+     
     private PDO $pdo;
-
 
     public function __construct(PDO $pdo)
     {
         $this -> pdo = $pdo;
     }
 
-    //metodos get
+    //========= MÉTODOS GET =========
     public function getIdUsuario(): ?int
     {
-        return $this -> id;
+        return $this -> id_usuario;
     }
     public function getNome(): string
     {
@@ -55,10 +53,8 @@ class usuario
     public function getStatus(): StatusUsuario{
         return $this -> status;
     }
-    
 
-
-    //metodos set
+    //========= MÉTODOS SET =========
     public function setNome(string $nome): void{
         if(strlen($nome) < 2){
             throw new InvalidArgumentException("O nome deve ter pelo menos 2 caracteres.");
@@ -69,6 +65,32 @@ class usuario
     {
         $this->usuario = trim($usuario);
     }
+    public function setCpf(string $cpf): void
+    {
+        $this->cpf = preg_replace('/[^0-9]/', '', $cpf); // Remove caracteres não numéricos
+    }
+    public function setData(DateTimeImmutable $data): void
+    {
+        try {
+            $this->data = $data;
+        } catch (Exception $e) {
+            throw new InvalidArgumentException("Data inválida: " . $e->getMessage());
+        }
+    }
+    public function setEmail(string $email): void{
+        $this->email = $email;
+    }
+    public function setTelefone(string $telefone) : void{
+        $this->telefone = $telefone;
+    }
+    public function setSaldo(float $saldo) : void{
+        $this->saldo = $saldo;
+    }
+    public function setStatus(StatusUsuario $status) : void{
+        $this->status = $status;
+    }
+
+    //========= FIM DOS MÉTODOS SET/GET =========
 
 }
 ?>
