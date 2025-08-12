@@ -218,7 +218,18 @@ class Usuario
         return $dados ? self::hidratarUsuario($dados, $pdo) : null;
     }
 
-    
+    /**
+     * Verifica se a senha pura fornecida corresponde ao hash da senha deste objeto.
+     * Encapsula a lógica de password_verify.
+     * @param string $senhaPura A senha a ser verificada.
+     * @return bool True se a senha for válida, false caso contrário.
+     */
+    public function verificarSenha(string $senhaPura): bool
+    {
+        // A função password_verify é a única forma segura de comparar uma senha com um hash.
+        return password_verify($senhaPura, $this->senha);
+    }
+
     /**
      * Método auxiliar privado para "hidratar" (preencher) um objeto Usuario com dados do banco.
      * 
