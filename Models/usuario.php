@@ -199,6 +199,26 @@ class Usuario
         return $dados ? self::hidratarUsuario($dados, $pdo) : null;
     }
 
+    public static function buscarPorUsuarioOuEmail(string $identificador, PDO $pdo): ?self
+    {
+        // A query SQL agora inclui uma cláusula OR para verificar as duas colunas.
+        $sql = "SELECT * FROM usuario WHERE usuario = :identificador OR email = :identificador";
+
+        $stmt = $pdo->prepare($sql);
+
+        // Associa o valor do identificador (que pode ser um username ou um email) ao placeholder.
+        $stmt->bindValue(':identificador', $identificador);
+
+        $stmt->execute();
+
+        $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Se encontrou dados, usa nosso método auxiliar para construir e retornar o objeto.
+        // Se não, retorna nulo. A lógica de hidratação é a mesma.
+        return $dados ? self::hidratarUsuario($dados, $pdo) : null;
+    }
+
+    
     /**
      * Método auxiliar privado para "hidratar" (preencher) um objeto Usuario com dados do banco.
      * 
