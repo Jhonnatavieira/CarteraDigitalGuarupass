@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once 'StatusUsuario.php';
 
-class usuario
+class Usuario
 {
     private ?int $id_usuario = null;
     private string $nome;
