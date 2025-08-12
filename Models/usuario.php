@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 declare(strict_types=1);
 
 require_once 'StatusUsuario.php';
@@ -15,51 +16,59 @@ class usuario
     private string $telefone;
     private float $saldo;
     private StatusUsuario $status;
-     
+
     private PDO $pdo;
 
     public function __construct(PDO $pdo)
     {
-        $this -> pdo = $pdo;
+        $this->pdo = $pdo;
     }
 
     //========= MÉTODOS GET =========
     public function getIdUsuario(): ?int
     {
-        return $this -> id_usuario;
+        return $this->id_usuario;
     }
     public function getNome(): string
     {
-        return $this -> nome;
+        return $this->nome;
     }
-    public function getEmail(): string{
-        return $this -> email;
+    public function getEmail(): string
+    {
+        return $this->email;
     }
-    public function getUsuario(): string{
-        return $this -> usuario;
+    public function getUsuario(): string
+    {
+        return $this->usuario;
     }
-    public function getCpf(): string{
-        return $this -> cpf;
+    public function getCpf(): string
+    {
+        return $this->cpf;
     }
-    public function getData(): DateTimeImmutable{
-        return $this -> data;
+    public function getData(): DateTimeImmutable
+    {
+        return $this->data;
     }
-    public function getTelefone(): string{
-        return $this -> telefone;
+    public function getTelefone(): string
+    {
+        return $this->telefone;
     }
-    public function getSaldo(): float{
-        return $this -> saldo;
+    public function getSaldo(): float
+    {
+        return $this->saldo;
     }
-    public function getStatus(): StatusUsuario{
-        return $this -> status;
+    public function getStatus(): StatusUsuario
+    {
+        return $this->status;
     }
 
     //========= MÉTODOS SET =========
-    public function setNome(string $nome): void{
-        if(strlen($nome) < 2){
+    public function setNome(string $nome): void
+    {
+        if (strlen($nome) < 2) {
             throw new InvalidArgumentException("O nome deve ter pelo menos 2 caracteres.");
         }
-        $this->nome=trim($nome);
+        $this->nome = trim($nome);
     }
     public function setUsuario(string $usuario): void
     {
@@ -77,17 +86,28 @@ class usuario
             throw new InvalidArgumentException("Data inválida: " . $e->getMessage());
         }
     }
-    public function setEmail(string $email): void{
+    public function setEmail(string $email): void
+    {
         $this->email = $email;
     }
-    public function setTelefone(string $telefone) : void{
+    public function setTelefone(string $telefone): void
+    {
         $this->telefone = $telefone;
     }
-    public function setSaldo(float $saldo) : void{
+    public function setSaldo(float $saldo): void
+    {
         $this->saldo = $saldo;
     }
-    public function setStatus(StatusUsuario $status) : void{
+    public function setStatus(StatusUsuario $status): void
+    {
         $this->status = $status;
+    }
+    public function setSenha(string $senhaPura): void
+    {
+        if (strlen($senhaPura) < 6) {
+            throw new InvalidArgumentException("A senha deve ter no mínimo 6 caracteres.");
+        }
+        $this->senha = password_hash($senhaPura, PASSWORD_DEFAULT);
     }
 
     //========= FIM DOS MÉTODOS SET/GET =========
@@ -99,11 +119,12 @@ class usuario
      * @return bool Retorna true em caso de sucesso
      * @throws Exception se o usuário, email ou CPF já existirem no banco
      */
-    public function salvar() : bool {
+    public function salvar(): bool
+    {
         if ($this->id_usuario === null) {
-            
+
             $sqlVerifica = "SELECT id_usuario FROM usuario WHERE usuario = :usuario OR email = :email OR cpf = :cpf";
-            $stmtVerifica = $this -> pdo->prepare( $sqlVerifica);
+            $stmtVerifica = $this->pdo->prepare($sqlVerifica);
             $stmtVerifica->bindValue(':usuario', $this->usuario);
             $stmtVerifica->bindValue(':email', $this->email);
             $stmtVerifica->bindValue(':cpf', $this->cpf);
@@ -121,7 +142,7 @@ class usuario
             $stmt->bindValue(':data', $this->data->format('Y-m-d H:i:s'));
             $stmt->bindValue(':status', $this->status->value); // .value pega o valor string do Enum
 
-        }else {
+        } else {
             $sql = "UPDATE usuario SET nome = :nome, usuario = :usuario, email = :email, telefone = :telefone WHERE id_usuario = :id_usuario";
         }
 
@@ -137,5 +158,43 @@ class usuario
 
         return $stmt->execute();
     }
+
+    /**
+     * Busca um usuario pelo id
+     * @param int $id O Id do usuario a ser buscado
+     * @param PDO $pdo A conexão com o banco de dados
+     * @return ?self caso encontre, retorna um objeto da classe Usuario, se não encontrar retorna null
+     */
+    public static function buscarPorId(int $id, PDO $pdo): ?self
+    {
+        
+        $sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$id]);
+        $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $dados ? self::hidratarUsuario($dados, $pdo) : null;
+    }
+
+    /**
+     * Método auxiliar privado para "hidratar" (preencher) um objeto Usuario com dados do banco.
+     * 
+     * @param array $dados Um array associativo com os dados de uma linha do banco.
+     * @param PDO $pdo A conexão com o banco, necessária para criar o novo objeto.
+     * @return self Retorna um objeto Usuario completo e preenchido.
+     */
+    private static function hidratarUsuario(array $dados, PDO $pdo): self
+    {
+        $usuario = new self($pdo);
+        $usuario->id_usuario = (int)$dados['id_usuario'];
+        $usuario->nome = $dados['nome'];
+        $usuario->usuario = $dados['usuario'];
+        $usuario->senha = $dados['senha'];
+        $usuario->cpf = $dados['cpf'];
+        $usuario->email = $dados['email'];
+        $usuario->telefone = $dados['telefone'];
+        $usuario->saldo = (float)$dados['saldo'];
+        $usuario->data = new DateTimeImmutable($dados['data']);
+        $usuario->status = StatusUsuario::from($dados['status']);
+        return $usuario;
+    }
 }
-?>
