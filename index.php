@@ -26,21 +26,21 @@
                     </div>
 
                     <!-- FORMULÁRIO DE LOGIN -->
-                    <form>
+                    <form action="./Controllers/login_controller.php" method="POST">
                         <!-- CAMPO DE E-MAIL/USUÁRIO -->
                         <div class="mb-3">
                             <label class="form-label">E-mail ou usuário</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="identificador">
                         </div>
                         
                         <!-- CAMPO DE SENHA -->
                         <div class="mb-4">
                             <label class="form-label">Senha:</label>
-                            <input type="password" class="form-control">
+                            <input type="password" class="form-control" name="senha">
                         </div>
                         
                         <!-- BOTÃO DE LOGIN -->
-                        <button type="submit" class="btn btn-login">Login</button>
+                        <button type="submit" formaction="./Controllers/login_controller.php" class="btn btn-login">Login</button>
                         
                         <!-- LINK ESQUECEU A SENHA -->
                         <div class="text-center d-flex justify-content-center align-items-center flex-column">
