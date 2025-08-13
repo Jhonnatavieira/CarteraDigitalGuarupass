@@ -128,8 +128,8 @@
                         <div class="card bg-light">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span>QR Code Premium</span>
-                                    <strong>R$ 15,00</strong>
+                                    <span>QR Code</span>
+                                    <strong>R$ 5,30</strong>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
                                     <span>Taxa de processamento</span>
@@ -138,7 +138,7 @@
                                 <hr>
                                 <div class="d-flex justify-content-between">
                                     <span><strong>Total</strong></span>
-                                    <strong style="color: #22c55e;">R$ 16,50</strong>
+                                    <strong style="color: #22c55e;">R$ 8,80</strong>
                                 </div>
                             </div>
                         </div>
