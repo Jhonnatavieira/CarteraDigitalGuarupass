@@ -146,7 +146,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
                 <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card d-flex justify-content-center align-items-center flex-column" style="height: 200px; width: 19.75rem;">
+                <div class="custom-card d-flex justify-content-center align-items-center flex-column" style="height: 200px; width:25.75rem">
                     <!-- Espaço reservado para futuras funcionalidades -->
                         <div class="saldo-icon">
                             <i class="fa-solid fa-scale-balanced"></i>
@@ -159,15 +159,8 @@
 
             <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center py-1">
                 <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card" style="height: 200px; width: 25.75rem;">
-                    <!-- Espaço reservado para futuras funcionalidades -->
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
-                <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card" style="height: 200px; width: 25.75rem;">
-                    <!-- Espaço reservado para futuras funcionalidades -->
+                <div class="custom-card d-flex justify-content-center align-items-center" style="width: 25.75rem; height: 400px;">
+                    <img src="../img/grafico.png" style="height: 390px;">
                 </div>
             </div>
         </div>
