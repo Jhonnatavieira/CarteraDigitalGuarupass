@@ -31,7 +31,7 @@ if ($_POST) {
     } catch (Exception $e) {
         error_log("Erro no login: " . $e->getMessage());
         $_SESSION['msg_erro_login'] = "Ocorreu um erro inesperado. Tente novamente.";
-        header('Location: ../public/login.php');
+        header('Location: ../index.php');
         exit();
     }
 }
