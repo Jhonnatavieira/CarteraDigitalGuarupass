@@ -69,6 +69,7 @@
         /* Efeito hover no botão */
         .btn-login:hover {
             background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+            color: white; /* Texto branco */
         }
 
         /* ===== LINK "ESQUECEU A SENHA" ===== */
