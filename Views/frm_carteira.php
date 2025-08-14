@@ -9,7 +9,7 @@
                 <!-- Seção do Carrossel -->
                 <div class="carousel-section">
                     <!-- Carrossel Bootstrap -->
-                    <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div id="cardCarousel" class="carousel slide">
                         <div class="carousel-inner">
                             <!-- Primeiro slide do carrossel -->
                             <div class="carousel-item active">
@@ -107,33 +107,59 @@
     </div>
 
     <!-- Modal NFC -->
-    <div class="modal fade" id="nfcModal" tabindex="-1" aria-labelledby="nfcModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header-wallet">
-                    <h5 class="modal-title" id="nfcModalLabel">
-                        <i class="bi bi-broadcast"></i> Função NFC
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="nfc-animation">
-                        <i class="bi bi-broadcast nfc-icon"></i>
-                    </div>
-                    <h4>Aproxime seu cartão</h4>
-                    <p>Mantenha o cartão próximo ao leitor NFC do dispositivo para realizar a leitura.</p>
-                    <div class="alert alert-info">
-                        <i class="bi bi-info-circle"></i>
-                        Certifique-se de que o NFC está habilitado no seu dispositivo.
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Tentar Novamente</button>
-                </div>
-            </div>
+     <!-- Modal NFC -->
+  <div class="modal fade" id="nfcModal" tabindex="-1" aria-labelledby="nfcModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <!-- Cabeçalho -->
+        <div class="modal-header modal-header-wallet">
+          <h5 class="modal-title" id="nfcModalLabel">
+            <i class="fa-solid fa-wifi"></i> Função NFC
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+
+        <!-- Corpo -->
+        <div class="modal-body text-center">
+          <!-- Estado aguardando -->
+          <div id="nfc-waiting" class="nfc-state">
+            <i class="fa-solid fa-wifi nfc-icon"></i>
+            <h4 class="mt-3">Aproxime seu cartão</h4>
+            <p>Mantenha o cartão próximo ao leitor NFC.</p>
+            <div class="alert alert-info">
+              <i class="fa-solid fa-circle-info"></i>
+              Certifique-se de que o NFC está habilitado no seu dispositivo.
+            </div>
+          </div>
+
+          <!-- Estado processando -->
+          <div id="nfc-processing" class="nfc-state d-none">
+            <div class="spinner-border text-primary mb-3" role="status"></div>
+            <h4>Processando pagamento...</h4>
+          </div>
+
+          <!-- Estado aprovado -->
+          <div id="nfc-success" class="nfc-state d-none">
+            <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
+            <h4 class="text-success mt-3">Pagamento Aprovado!</h4>
+            <small class="text-muted">
+              Cartão: **** **** **** <span id="card-last-digits"></span><br>
+              Valor: R$ <span id="transaction-amount"></span><br>
+              ID: <span id="transaction-id"></span>
+            </small>
+          </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="modal-footer">
+          <button id="btn-retry" class="btn btn-primary">Tentar Novamente</button>
+          <button id="btn-finish" class="btn btn-success d-none" data-bs-dismiss="modal">Finalizar</button>
+        </div>
+
+      </div>
     </div>
+  </div>
 
     <!-- Modal Ver Saldo -->
     <div class="modal fade" id="balanceModal" tabindex="-1" aria-labelledby="balanceModalLabel" aria-hidden="true">
@@ -175,3 +201,51 @@
             </div>
         </div>
     </div>
+    
+    <script>
+         function showState(id) {
+      document.querySelectorAll('.nfc-state').forEach(el => el.classList.add('d-none'));
+      document.getElementById(id).classList.remove('d-none');
+    }
+
+    function resetModal() {
+      showState('nfc-waiting');
+      document.getElementById('btn-retry').classList.remove('d-none');
+      document.getElementById('btn-finish').classList.add('d-none');
+    }
+
+    function startProcess() {
+      showState('nfc-waiting');
+
+      // Aguarda 2s, depois vai para "processando"
+      setTimeout(() => {
+        showState('nfc-processing');
+
+        // Mais 2s e aprova pagamento
+        setTimeout(() => {
+          document.getElementById('card-last-digits').textContent =
+            (Math.floor(Math.random() * 9000) + 1000).toString();
+
+          document.getElementById('transaction-amount').textContent = '5.30';
+
+          document.getElementById('transaction-id').textContent = 'TXN' + Date.now();
+
+          showState('nfc-success');
+          document.getElementById('btn-retry').classList.add('d-none');
+          document.getElementById('btn-finish').classList.remove('d-none');
+        }, 2000);
+      }, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalEl = document.getElementById('nfcModal');
+
+      modalEl.addEventListener('show.bs.modal', resetModal);
+      modalEl.addEventListener('shown.bs.modal', () => setTimeout(startProcess, 1000));
+
+      document.getElementById('btn-retry').addEventListener('click', () => {
+        resetModal();
+        startProcess();
+      });
+    });
+    </script>

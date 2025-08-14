@@ -296,30 +296,32 @@
 }
 
 /* Animação NFC */
-.nfc-animation {
-    margin: 2rem 0;
-}
+/* Animação pulsante para o ícone de NFC */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
 
-.nfc-icon {
-    font-size: 4rem;
-    color: #ff8c42;
-    animation: pulse 2s infinite;
-}
+    .nfc-animation .fa-wifi {
+        animation: pulse 2s infinite;
+        color: #0d6efd; /* Azul primário do Bootstrap */
+        margin-bottom: 20px;
+    }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
+    /* Ícone de sucesso (reaproveitado da solução anterior) */
+    .success-icon {
+        font-size: 80px;
+        color: #198754;
     }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.7;
+
+    /* Estilo para o conteúdo do modal ter sempre uma altura mínima */
+    #modalContent{
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
 
 /* Display do saldo */
 .balance-display {
