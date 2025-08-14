@@ -75,34 +75,21 @@
             </div>
             <div class="modal-body text-center py-4">
                 <div class="mb-4">
-                    <div class="qr-code mx-auto" style="width: 200px; height: 200px;">
-                        <img src="../img/QRCode.png" style="height: 195px;" alt="">
+                    <div id="qrcodeContent" class="mx-auto my-auto" style="width: 200px; height: 200px;">
+                        <div class="initialState">
+                            <img src="../img/QRCode.png" style="height: 195px;" alt="">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Botões de ação do modal -->
-                <div class="d-flex flex-column gap-2">
-                    <button class="action-btn w-100">
-                        Mostrar QRCode
-                    </button>
-                    <button class="action-btn w-100">
-                        Comprar QRCode
-                    </button>
-                </div>
-
-                <!-- Forma de pagamento no modal -->
-                <div class="mt-4">
-                    <p class="mb-2 text-start small">Forma de pagamento</p>
-                    <div class="d-flex align-items-center justify-content-between p-2 border rounded">
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="pix-icon" style="width: 30px; height: 30px;">
-                                <i class="fa-brands fa-pix fa-2xl"></i>
-                            </div>
-                            <span class="payment-name">Pix</span>
+                <div class="d-flex w-100">
+                    <div class="row w-100 ">
+                        <div class="col d-flex justify-content-end">
+                            <button id="readQrButton" class="action-btn px-5">
+                                Ler
+                            </button>
                         </div>
-                        <button class="change-btn btn btn-sm" data-bs-toggle="modal" data-bs-target="#paymentModal">
-                            Mudar
-                        </button>
                     </div>
                 </div>
             </div>
@@ -126,7 +113,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h6 class="mb-3">Detalhes da Compra</h6>
-                        
+
                         <!-- Seletor de Quantidade -->
                         <div class="mb-3">
                             <label class="form-label">Quantidade de QR Codes</label>
@@ -187,7 +174,7 @@
                 </div>
                 <h3 class="mb-3" style="color: #22c55e;">Compra Realizada com Sucesso!</h3>
                 <p class="text-muted mb-4">Seu pagamento foi processado e seus QR Codes foram gerados.</p>
-                
+
                 <!-- Resumo da compra -->
                 <div class="card bg-light mb-4">
                     <div class="card-body">
@@ -268,159 +255,156 @@
     </div>
 </div>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-// Constantes de preço
-const QR_CODE_PRICE = 5.30;
-const SERVICE_FEE = 1.30;
+    // Constantes de preço
+    const QR_CODE_PRICE = 5.30;
+    const SERVICE_FEE = 1.30;
 
-// Variável para método de pagamento selecionado
-let selectedPaymentMethod = 'PIX';
+    // Variável para método de pagamento selecionado
+    let selectedPaymentMethod = 'PIX';
 
-// Função para selecionar método de pagamento
-function selectPayment(element, method) {
-    // Remove seleção de todos
-    document.querySelectorAll('.payment-option').forEach(option => {
-        option.classList.remove('selected');
-        const icon = option.querySelector('.ms-auto i');
-        if (icon) {
-            icon.className = 'bi bi-circle';
-            icon.style.color = '#d1d5db';
-        }
-    });
-
-    // Adiciona seleção ao clicado
-    element.classList.add('selected');
-    const selectedIcon = element.querySelector('.ms-auto i');
-    if (selectedIcon) {
-        selectedIcon.className = 'bi bi-check-circle';
-        selectedIcon.style.color = '#22c55e';
-    }
-
-    selectedPaymentMethod = method;
-    updatePaymentMethodDisplay();
-}
-
-// Função para atualizar método na interface (renomeada para evitar conflito)
-function updatePaymentMethodDisplay() {
-    const paymentNames = document.querySelectorAll('.payment-name');
-    const pixIcons = document.querySelectorAll('.pix-icon i');
-
-    paymentNames.forEach(name => {
-        if (name) {
-            name.textContent = selectedPaymentMethod;
-        }
-    });
-
-    pixIcons.forEach(icon => {
-        if (icon) {
-            if (selectedPaymentMethod === 'PIX') {
-                icon.className = 'fa-brands fa-pix fa-2xl';
-            } else {
-                icon.className = 'fa-solid fa-credit-card fa-2xl';
+    // Função para selecionar método de pagamento
+    function selectPayment(element, method) {
+        // Remove seleção de todos
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.classList.remove('selected');
+            const icon = option.querySelector('.ms-auto i');
+            if (icon) {
+                icon.className = 'bi bi-circle';
+                icon.style.color = '#d1d5db';
             }
+        });
+
+        // Adiciona seleção ao clicado
+        element.classList.add('selected');
+        const selectedIcon = element.querySelector('.ms-auto i');
+        if (selectedIcon) {
+            selectedIcon.className = 'bi bi-check-circle';
+            selectedIcon.style.color = '#22c55e';
         }
-    });
-}
 
-// Função para atualizar método de pagamento no modal de sucesso
-function updatePaymentMethodInSuccessModal(method) {
-    const paymentElement = document.getElementById('successPaymentMethod');
-    if (paymentElement) {
-        paymentElement.textContent = method; // 'PIX' ou 'Débito'
+        selectedPaymentMethod = method;
+        updatePaymentMethodDisplay();
     }
-}
 
-// Função para alterar quantidade
-function changeQuantity(change) {
-    const quantityInput = document.getElementById('quantityInput');
-    const decreaseBtn = document.getElementById('decreaseBtn');
-    const increaseBtn = document.getElementById('increaseBtn');
-    
-    if (!quantityInput) return;
-    
-    let currentQuantity = parseInt(quantityInput.value);
-    let newQuantity = currentQuantity + change;
-    
-    // Limitar entre 1 e 10
-    if (newQuantity < 1) newQuantity = 1;
-    if (newQuantity > 10) newQuantity = 10;
-    
-    quantityInput.value = newQuantity;
-    
-    // Desabilitar botões quando nos limites
-    if (decreaseBtn) decreaseBtn.disabled = newQuantity === 1;
-    if (increaseBtn) increaseBtn.disabled = newQuantity === 10;
-    
-    updatePrices(newQuantity);
-}
+    // Função para atualizar método na interface (renomeada para evitar conflito)
+    function updatePaymentMethodDisplay() {
+        const paymentNames = document.querySelectorAll('.payment-name');
+        const pixIcons = document.querySelectorAll('.pix-icon i');
 
-// Função para atualizar preços
-function updatePrices(quantity) {
-    const qrSubTotal = QR_CODE_PRICE * quantity;
-    const totalPrice = qrSubTotal + SERVICE_FEE;
-    
-    // Atualizar elementos na tela
-    const qrQuantityDisplay = document.getElementById('qrQuantityDisplay');
-    const qrSubTotalElement = document.getElementById('qrSubTotal');
-    const serviceFeeElement = document.getElementById('serviceFee');
-    const totalPriceElement = document.getElementById('totalPrice');
-    
-    if (qrQuantityDisplay) qrQuantityDisplay.textContent = quantity;
-    if (qrSubTotalElement) qrSubTotalElement.textContent = `R$ ${qrSubTotal.toFixed(2).replace('.', ',')}`;
-    if (serviceFeeElement) serviceFeeElement.textContent = `R$ ${SERVICE_FEE.toFixed(2).replace('.', ',')}`;
-    if (totalPriceElement) totalPriceElement.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-}
-
-// Função para finalizar compra
-function finalizePurchase() {
-    const quantityInput = document.getElementById('quantityInput');
-    if (!quantityInput) return;
-    
-    const quantity = parseInt(quantityInput.value);
-    const totalPrice = (QR_CODE_PRICE * quantity) + SERVICE_FEE;
-    
-    // Atualizar dados no modal de sucesso
-    const successQuantity = document.getElementById('successQuantity');
-    const successTotal = document.getElementById('successTotal');
-    
-    if (successQuantity) successQuantity.textContent = quantity;
-    if (successTotal) successTotal.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-    
-    // Atualizar método de pagamento no modal de sucesso
-    updatePaymentMethodInSuccessModal(selectedPaymentMethod);
-    
-    // Fechar modal de compra e abrir modal de sucesso
-    const purchaseModalElement = document.getElementById('purchaseModal');
-    if (purchaseModalElement) {
-        const purchaseModal = bootstrap.Modal.getInstance(purchaseModalElement);
-        if (purchaseModal) purchaseModal.hide();
-        
-        // Aguardar um momento para a animação do modal anterior
-        setTimeout(() => {
-            const successModalElement = document.getElementById('successModal');
-            if (successModalElement) {
-                const successModal = new bootstrap.Modal(successModalElement);
-                successModal.show();
+        paymentNames.forEach(name => {
+            if (name) {
+                name.textContent = selectedPaymentMethod;
             }
-        }, 300);
-    }
-}
+        });
 
-// Inicializar quando o DOM estiver carregado
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar estado dos botões de quantidade
-    const decreaseBtn = document.getElementById('decreaseBtn');
-    if (decreaseBtn) {
-        decreaseBtn.disabled = true; // Começar com 1 QR code, então - deve estar desabilitado
+        pixIcons.forEach(icon => {
+            if (icon) {
+                if (selectedPaymentMethod === 'PIX') {
+                    icon.className = 'fa-brands fa-pix fa-2xl';
+                } else {
+                    icon.className = 'fa-solid fa-credit-card fa-2xl';
+                }
+            }
+        });
     }
-    
-    // Inicializar preços com quantidade 1
-    updatePrices(1);
-    
-    // Inicializar método de pagamento
-    updatePaymentMethodDisplay();
-});
+
+    // Função para atualizar método de pagamento no modal de sucesso
+    function updatePaymentMethodInSuccessModal(method) {
+        const paymentElement = document.getElementById('successPaymentMethod');
+        if (paymentElement) {
+            paymentElement.textContent = method; // 'PIX' ou 'Débito'
+        }
+    }
+
+    // Função para alterar quantidade
+    function changeQuantity(change) {
+        const quantityInput = document.getElementById('quantityInput');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+
+        if (!quantityInput) return;
+
+        let currentQuantity = parseInt(quantityInput.value);
+        let newQuantity = currentQuantity + change;
+
+        // Limitar entre 1 e 10
+        if (newQuantity < 1) newQuantity = 1;
+        if (newQuantity > 10) newQuantity = 10;
+
+        quantityInput.value = newQuantity;
+
+        // Desabilitar botões quando nos limites
+        if (decreaseBtn) decreaseBtn.disabled = newQuantity === 1;
+        if (increaseBtn) increaseBtn.disabled = newQuantity === 10;
+
+        updatePrices(newQuantity);
+    }
+
+    // Função para atualizar preços
+    function updatePrices(quantity) {
+        const qrSubTotal = QR_CODE_PRICE * quantity;
+        const totalPrice = qrSubTotal + SERVICE_FEE;
+
+        // Atualizar elementos na tela
+        const qrQuantityDisplay = document.getElementById('qrQuantityDisplay');
+        const qrSubTotalElement = document.getElementById('qrSubTotal');
+        const serviceFeeElement = document.getElementById('serviceFee');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        if (qrQuantityDisplay) qrQuantityDisplay.textContent = quantity;
+        if (qrSubTotalElement) qrSubTotalElement.textContent = `R$ ${qrSubTotal.toFixed(2).replace('.', ',')}`;
+        if (serviceFeeElement) serviceFeeElement.textContent = `R$ ${SERVICE_FEE.toFixed(2).replace('.', ',')}`;
+        if (totalPriceElement) totalPriceElement.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+    }
+
+    // Função para finalizar compra
+    function finalizePurchase() {
+        const quantityInput = document.getElementById('quantityInput');
+        if (!quantityInput) return;
+
+        const quantity = parseInt(quantityInput.value);
+        const totalPrice = (QR_CODE_PRICE * quantity) + SERVICE_FEE;
+
+        // Atualizar dados no modal de sucesso
+        const successQuantity = document.getElementById('successQuantity');
+        const successTotal = document.getElementById('successTotal');
+
+        if (successQuantity) successQuantity.textContent = quantity;
+        if (successTotal) successTotal.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+
+        // Atualizar método de pagamento no modal de sucesso
+        updatePaymentMethodInSuccessModal(selectedPaymentMethod);
+
+        // Fechar modal de compra e abrir modal de sucesso
+        const purchaseModalElement = document.getElementById('purchaseModal');
+        if (purchaseModalElement) {
+            const purchaseModal = bootstrap.Modal.getInstance(purchaseModalElement);
+            if (purchaseModal) purchaseModal.hide();
+
+            // Aguardar um momento para a animação do modal anterior
+            setTimeout(() => {
+                const successModalElement = document.getElementById('successModal');
+                if (successModalElement) {
+                    const successModal = new bootstrap.Modal(successModalElement);
+                    successModal.show();
+                }
+            }, 300);
+        }
+    }
+
+    // Inicializar quando o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar estado dos botões de quantidade
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        if (decreaseBtn) {
+            decreaseBtn.disabled = true; // Começar com 1 QR code, então - deve estar desabilitado
+        }
+
+        // Inicializar preços com quantidade 1
+        updatePrices(1);
+
+        // Inicializar método de pagamento
+        updatePaymentMethodDisplay();
+    });
 </script>

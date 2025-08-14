@@ -31,9 +31,10 @@
                         <i class="fa-solid fa-circle-user fa-2xl"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><button class="dropdown-item" type="button">Action</button></li>
-                        <li><button class="dropdown-item" type="button">Another action</button></li>
-                        <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        <li><button class="dropdown-item" type="button">Perfil</button></li>
+                        <li><button class="dropdown-item" type="button">Configurações</button></li>
+                        <hr>
+                        <li><button class="dropdown-item" type="button"><a href="../Controllers/logout.php" style="text-decoration: none; color: black">Sair</a></button></li>
                     </ul>
                 </div>
             </nav>

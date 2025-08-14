@@ -3,7 +3,7 @@
       /* Mantém o mesmo fundo gradiente da imagem */
       background: linear-gradient(135deg, #e8d5f2 0%, #a8e6cf 100%);
       min-height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     /* ===== CUSTOMIZAÇÕES DO BOOTSTRAP ===== */

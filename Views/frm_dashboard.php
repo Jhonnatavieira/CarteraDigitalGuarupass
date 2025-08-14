@@ -3,7 +3,7 @@
 
 <div class="row">
     <!-- Coluna Esquerda - Cartões e Histórico -->
-    <div class="col-lg-8">
+    <div class="col-lg-12 col-xl-8">
         <!-- Seção de Cartões -->
         <div class="row d-flex justify-content-center align-items-center gap-5">
             <!-- Cartão Físico -->
@@ -142,9 +142,9 @@
 
     <!-- Graficos e saldo -->
     <!-- Coluna Direita - Espaço para futuras funcionalidades e Gráfico -->
-    <div class="col-lg-4">
+    <div class="col-lg-12 col-xl-4">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-12 d-flex justify-content-center align-items-center">
                 <!-- Card vazio para futuras funcionalidades -->
                 <div class="custom-card d-flex justify-content-center align-items-center flex-column" style="height: 200px; width:25.75rem">
                     <!-- Espaço reservado para futuras funcionalidades -->
@@ -157,10 +157,10 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-12 d-flex justify-content-center align-items-center py-1">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-12 d-flex justify-content-center align-items-center py-1">
                 <!-- Card vazio para futuras funcionalidades -->
-                <div class="custom-card d-flex justify-content-center align-items-center" style="width: 25.75rem; height: 400px;">
-                    <img src="../img/grafico.png" style="height: 390px;">
+                <div class="custom-card d-flex justify-content-center align-items-center" style="max-width: 25.75rem; max-height: 400px;">
+                    <img class="img-fluid" src="../img/grafico.png" style="max-height: 390px;">
                 </div>
             </div>
         </div>

@@ -29,4 +29,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Executa a verificação de tela no carregamento inicial da página
     sidebarRezise();
+
+
+    //=============== QRCODE =======================
+
+    const readButton = document.getElementById('readQrButton');
+    const qrCodeContent = document.getElementById('qrcodeContent');
+    const initialStateHTML = qrCodeContent.innerHTML; // Salva o estado inicial (imagem do QR Code)
+
+    // Adiciona o "ouvinte" de evento ao botão "Ler"
+    readButton.addEventListener('click', () => {
+        // 1. Mostra a animação de "carregando"
+        qrCodeContent.innerHTML = `
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; margin-top: 50px;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3">Processando pagamento...</p>
+        `;
+        
+        // Desabilita o botão para evitar múltiplos cliques
+        readButton.disabled = true;
+
+        // 2. Simula um tempo de espera (ex: 2.5 segundos)
+        setTimeout(() => {
+            // 3. Mostra a mensagem de "pagamento aprovado"
+            qrCodeContent.innerHTML = `
+                <i class="fa-solid fa-check fa-2xl mb-4" style="color: #44df30; margin-top: 50%;"></i>
+                <h5>Pagamento Aprovado!</h5>
+            `;
+
+        }, 2500); // 2500 milissegundos = 2.5 segundos
+    });
+
+    // Opcional: Reseta o modal quando ele é fechado
+    const qrModal = document.getElementById('qrModal');
+    qrModal.addEventListener('hidden.bs.modal', () => {
+        qrCodeContent.innerHTML = initialStateHTML;
+        readButton.disabled = false; // Habilita o botão novamente
+    });
+
+    //=============== FIM QRCODE =======================
 });
