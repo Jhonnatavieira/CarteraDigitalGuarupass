@@ -38,7 +38,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a href="?tela=onibus" class="sidebar-link <?= $telaAtual === 'onibus' ? 'active-bus text-white' : ''?>">
+        <a href="http://10.37.45.47/rotaconsultas/mobile/login.php" target="_blank" class="sidebar-link <?= $telaAtual === 'onibus' ? 'active-bus text-white' : ''?>">
             <i class="fa-solid fa-bus"></i>
             <span >Rota</span>
         </a>
