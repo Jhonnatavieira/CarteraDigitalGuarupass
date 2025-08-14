@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+    
+    $_SESSION['msg_erro'] = "Acesso negado. Por favor, faça o login.";
+    
+    
+    header('Location: ../index.php');
+    
+    exit();
+}
+
+?>
 <!doctype html>
 <html lang="pt-br">
 
