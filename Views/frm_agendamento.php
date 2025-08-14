@@ -105,6 +105,54 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- SLIDE 3 - 3 cards -->
+                            <div class="carousel-slide">
+                                <div class="row g-4 justify-content-center">
+                                    <div class="col-md-4">
+                                        <div class="service-item text-center" onclick="selectService(this, 'escolar')">
+                                            <img src="../img/Cartão-png/Escolar Aluno.png" alt="escolar"
+                                                class="img-fluid mb-3" id="img-escolar-desktop">
+                                            <h5 class="fw-bold mb-3">Escolar Aluno</h5>
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <input type="radio" name="service" value="escolar" class="radio-custom"
+                                                    id="radio-escolar-desktop">
+                                                <label for="radio-escolar-desktop"
+                                                    class="text-muted small">Selecionar</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="service-item text-center"
+                                            onclick="selectService(this, 'valescolarProfe')">
+                                            <img src="../img/Cartão-png/Escolar Professor.png" alt="escolarProf"
+                                                class="img-fluid mb-3" id="img-escolarProf-desktop">
+                                            <h5 class="fw-bold mb-3">Escolar Professor</h5>
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <input type="radio" name="service" value="escolarProf"
+                                                    class="radio-custom" id="radio-vale escolarProf-desktop">
+                                                <label for="radio-escolarProf-desktop"
+                                                    class="text-muted small">Selecionar</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="service-item text-center" onclick="selectService(this, 'bilhetinho')">
+                                            <img src="../img/Cartão-png/Bilhetinho.png" alt="bilhetinho"
+                                                class="img-fluid mb-3" id="img-bilhetinho-desktop">
+                                            <h5 class="fw-bold mb-3">Bilhetinho</h5>
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <input type="radio" name="service" value="bilhetinho" class="radio-custom"
+                                                    id="radio-bilhetinho-desktop">
+                                                <label for="radio-bilhetinho-desktop"
+                                                    class="text-muted small">Selecionar</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -121,6 +169,7 @@
                     <div class="carousel-dots" id="carouselDotsDesktop">
                         <span class="dot active" onclick="currentSlide(1, 'desktop')"></span>
                         <span class="dot" onclick="currentSlide(2, 'desktop')"></span>
+                        <span class="dot" onclick="currentSlide(3, 'desktop')"></span>
                     </div>
                 </div>
             </div>
@@ -251,6 +300,8 @@
                         </div>
                     </div>
 
+                    
+
                     <!-- Setas Mobile -->
                     <button class="carousel-controls carousel-prev" onclick="prevSlide('mobile')">
                          <i class="fa-solid fa-angle-left" style="color: #000000;"></i>
@@ -277,7 +328,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card shadow border-0 rounded-4">
-                    <div class="card-body p-4">
+                    <div class="card-body p-4" id="form-container">
                         <form>
                             <div class="row g-3 mb-3">
                                 <div class="col-md-6">
@@ -329,8 +380,8 @@
     // === CONFIGURAÇÕES DOS CARROSSÉIS ===
     let currentSlideDesktop = 0;
     let currentSlideMobile = 0;
-    const totalSlidesDesktop = 2; // 2 slides com 3 cards cada
-    const totalSlidesMobile = 6;  // 6 slides com 1 card cada
+    const totalSlidesDesktop = 3; // 2 slides com 3 cards cada
+    const totalSlidesMobile = 9;  // 6 slides com 1 card cada
 
     // === FUNÇÕES DE NAVEGAÇÃO ===
     function nextSlide(type) {
@@ -502,4 +553,165 @@
     addServiceImage('criminal', 'path/to/criminal-image.jpg');
     addServiceImage('trabalhista', 'path/to/trabalhista-image.jpg');
     */
+
+
+
+
+
+
+
+   // === FUNÇÃO DE SELEÇÃO DE SERVIÇO ===
+function selectService(serviceElement, serviceValue) {
+    // Remove seleção de todos os itens (ambos carrosséis)
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+
+    // Adiciona seleção ao item clicado
+    serviceElement.classList.add('selected');
+
+    // Marca o radio button correspondente
+    const radioButton = serviceElement.querySelector('input[type="radio"]');
+    radioButton.checked = true;
+
+    // Sincronizar seleção entre desktop e mobile
+    const desktopRadio = document.querySelector(`input[name="service"][value="${serviceValue}"]`);
+    const mobileRadio = document.querySelector(`input[name="serviceMobile"][value="${serviceValue}"]`);
+
+    if (desktopRadio) desktopRadio.checked = true;
+    if (mobileRadio) mobileRadio.checked = true;
+
+    // Atualizar o conteúdo do formulário baseado no serviço selecionado
+    updateFormContent(serviceValue);
+
+    console.log('Serviço selecionado:', serviceValue);
+}
+
+// === FUNÇÃO PARA ATUALIZAR O CONTEÚDO DO FORMULÁRIO ===
+function updateFormContent(serviceValue) {
+    const formContainer = document.getElementById('form-container');
+    
+    // Serviços que não precisam de agendamento
+    const noAppointmentServices = [ 'senior', 'cidadao', 'Cidadão', 'vale transporte', 'vale',];
+    
+    if (noAppointmentServices.includes(serviceValue)) {
+        // Mostrar aviso para serviços que não precisam de agendamento
+        formContainer.innerHTML = `
+            <div class="alert alert-info border-0 rounded-3" role="alert">
+                <h5 class="alert-heading fw-bold mb-3">
+                    <i class="fas fa-info-circle me-2"></i>Aviso ao Usuário
+                </h5>
+                <p class="mb-0">
+                    <strong>Prezado Usuário,</strong><br>
+                    Provisoriamente não será necessário agendamento para o cartão selecionado. 
+                    Confira a documentação e compareça presencialmente para ser atendido.
+                </p>
+            </div>
+            <div class="mt-3 p-3 bg-light rounded-3">
+                <h6 class="fw-bold mb-2">Documentação necessária:</h6>
+                <ul class="mb-0 small">
+                    <li>Documento de identidade (RG ou CNH)</li>
+                    <li>CPF</li>
+                    <li>Comprovante de residência</li>
+                    ${getSpecificDocuments(serviceValue)}
+                </ul>
+            </div>
+        `;
+    } else {
+        // Mostrar formulário de agendamento normal
+        formContainer.innerHTML = `
+            <form>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Selecione uma data:</label>
+                        <input type="date" class="form-control form-control-lg rounded-3">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Digite o seu nome:</label>
+                        <input type="text" class="form-control form-control-lg rounded-3"
+                            placeholder="Seu nome completo">
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-lg-4">
+                        <label class="form-label fw-semibold">E-mail:</label>
+                        <input type="email" class="form-control form-control-lg rounded-3"
+                            placeholder="seu@email.com">
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fw-semibold">CPF:</label>
+                        <input type="text" class="form-control form-control-lg rounded-3"
+                            placeholder="000.000.000-00" maxlength="14" id="cpf-input">
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label fw-semibold">Celular:</label>
+                        <input type="tel" class="form-control form-control-lg rounded-3"
+                            placeholder="(00) 00000-0000" maxlength="15" id="phone-input">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary-custom btn-lg px-5 rounded-3 fw-semibold text-white">
+                        Agendar atendimento
+                    </button>
+                </div>
+            </form>
+        `;
+        
+        // Reativar máscaras de input após recriar o formulário
+        setupInputMasks();
+    }
+}
+
+// === FUNÇÃO PARA DOCUMENTOS ESPECÍFICOS ===
+function getSpecificDocuments(serviceValue) {
+    switch(serviceValue) {
+        case 'gratuidade':
+            return '<li>Comprovante de renda familiar</li>';
+        case 'senior':
+        case 'Senior':
+            return '<li>Comprovante de idade (60 anos ou mais)</li>';
+        case 'livre':
+            return '<li>Declaração de matrícula escolar</li>';
+        case 'Especial':
+        case 'especial':
+            return '<li>Laudo médico ou documento que comprove a deficiência</li>';
+        case 'vale transporte':
+        case 'vale':
+            return '<li>Declaração do empregador</li>';
+        default:
+            return '';
+    }
+}
+
+// === FUNÇÃO PARA CONFIGURAR MÁSCARAS DE INPUT ===
+function setupInputMasks() {
+    const cpfInput = document.getElementById('cpf-input');
+    const phoneInput = document.getElementById('phone-input');
+    
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+    }
+    
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+    }
+}
+
 </script>

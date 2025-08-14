@@ -160,7 +160,7 @@
             <div class="col-12 col-md-6 col-lg-6 col-xl-12 d-flex justify-content-center align-items-center py-1">
                 <!-- Card vazio para futuras funcionalidades -->
                 <div class="custom-card d-flex justify-content-center align-items-center" style="max-width: 25.75rem; max-height: 400px;">
-                    <img class="img-fluid" src="../img/grafico.png" style="max-height: 390px;">
+                    <img class="img-fluid" src="../img/grafico copiar.png" style="max-height: 390px;">
                 </div>
             </div>
         </div>
