@@ -52,7 +52,7 @@ CarteraDigitalGuarupass/
 
 ---
 
-##❗ Requisitos para execução
+## ❗ Requisitos para execução
 Para executar este projeto localmente, você precisará de um ambiente de servidor web com PHP e um banco de dados MySQL. A forma mais fácil de obter isso é usando um pacote como o MAMP.
 
 Servidor Local (MAMP):
@@ -125,7 +125,7 @@ O endereço será algo como: http://localhost/CarteraDigitalGuarupass
 ---
 
 
-##💡 Como Usar a Aplicação
+## 💡 Como Usar a Aplicação
 Como esta é uma aplicação web, o uso é feito pelo navegador:
 
 Acesse a página inicial (index.php) no seu navegador (link do passo 6 acima).
